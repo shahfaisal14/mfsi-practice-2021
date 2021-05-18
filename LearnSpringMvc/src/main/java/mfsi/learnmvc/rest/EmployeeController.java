@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/employee")
+@RequestMapping("/employe")
 public class EmployeeController {
 
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
