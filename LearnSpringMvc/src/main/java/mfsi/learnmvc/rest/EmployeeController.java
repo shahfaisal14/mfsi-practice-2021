@@ -3,6 +3,7 @@ package mfsi.learnmvc.rest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,5 +31,15 @@ public class EmployeeController {
 		return response;
 	}
 	
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+	public void delete(@PathVariable Integer id){
+		service.delete(id);
+	}
+	
+	@RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
+	public void update(@RequestBody EmployeeDto dto,@PathVariable Integer id ){
+		service.update(dto, id);
+		
+	}
 
 }
