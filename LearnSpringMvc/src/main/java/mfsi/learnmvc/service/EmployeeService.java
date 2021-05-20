@@ -21,10 +21,25 @@ public class EmployeeService {
 		return employees;
 	}
 
-	public EmployeeDto search(Integer id) {
-	
-		return employees.stream().filter(t -> t.getId().equals(id)).findAny().orElse(null);
-		
+
+	public void delete(Integer id) {
+		employees.removeIf(t -> t.getId().equals(id));
 	}
 
+	public EmployeeDto update(EmployeeDto dto) {
+		int index = employees.indexOf(dto);
+		employees.set(index, dto);
+		return dto;
+	}
+
+	public EmployeeDto search(Integer id) {
+		return employees.stream().filter(t -> t.getId().equals(id)).findAny().orElse(null);
+
+		
+	}
 }
+
+
+
+
+

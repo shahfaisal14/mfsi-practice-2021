@@ -16,7 +16,7 @@ import mfsi.learnmvc.service.EmployeeService;
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
-	
+
 	@Autowired
 	private EmployeeService service;
 
@@ -25,18 +25,28 @@ public class EmployeeController {
 		ResponseEntity<?> response = new ResponseEntity<>(service.getAll(), HttpStatus.OK);
 		return response;
 	}
-	
+
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public ResponseEntity<?> save(@RequestBody EmployeeDto dto){
+	public ResponseEntity<?> save(@RequestBody EmployeeDto dto) {
 		ResponseEntity<?> response = new ResponseEntity<>(service.save(dto), HttpStatus.OK);
 		return response;
 	}
+
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public ResponseEntity<?> search(@RequestParam(value="id") Integer id){
+	public ResponseEntity<?> search(@RequestParam(value = "id") Integer id) {
 		ResponseEntity<?> response = new ResponseEntity<>(service.search(id), HttpStatus.OK);
 		return response;
 	}
-	
-	
+
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+	public void delete(@PathVariable Integer id) {
+		service.delete(id);
+	}
+
+	@RequestMapping(value = "/update", method = RequestMethod.PUT)
+	public ResponseEntity<?> update(@RequestBody EmployeeDto dto) {
+		ResponseEntity<?> response = new ResponseEntity<>(service.update(dto), HttpStatus.OK);
+		return response;
+	}
 
 }
