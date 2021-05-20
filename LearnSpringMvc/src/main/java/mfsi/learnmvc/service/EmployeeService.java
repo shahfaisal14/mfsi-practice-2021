@@ -23,6 +23,7 @@ public class EmployeeService {
 		return employees;
 	}
 
+<<<<<<< HEAD
 	public void delete(Integer id) {
 		employees.removeIf(t -> t.getId().equals(id));
 	}
@@ -46,3 +47,12 @@ public class EmployeeService {
 		
 	}
 }
+=======
+	public EmployeeDto search(Integer id) {
+	
+		return employees.stream().filter(t -> t.getId().equals(id)).findAny().orElse(null);
+		
+	}
+
+}
+>>>>>>> 958599eadaa1213316f7a439abe518e671e27499

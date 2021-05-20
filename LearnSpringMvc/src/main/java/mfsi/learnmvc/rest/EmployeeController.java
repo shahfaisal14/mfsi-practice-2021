@@ -33,6 +33,16 @@ public class EmployeeController {
 		ResponseEntity<?> response = new ResponseEntity<>(service.save(dto), HttpStatus.OK);
 		return response;
 	}
+<<<<<<< HEAD
+=======
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public ResponseEntity<?> search(@RequestParam(value="id") Integer id){
+		ResponseEntity<?> response = new ResponseEntity<>(service.search(id), HttpStatus.OK);
+		return response;
+	}
+	
+	
+>>>>>>> 958599eadaa1213316f7a439abe518e671e27499
 
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable Integer id) {
