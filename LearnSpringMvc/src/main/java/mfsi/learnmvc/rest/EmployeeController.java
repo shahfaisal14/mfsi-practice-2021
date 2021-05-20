@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
-
 import mfsi.learnmvc.dto.EmployeeDto;
 import mfsi.learnmvc.service.EmployeeService;
 
@@ -33,16 +31,12 @@ public class EmployeeController {
 		ResponseEntity<?> response = new ResponseEntity<>(service.save(dto), HttpStatus.OK);
 		return response;
 	}
-<<<<<<< HEAD
-=======
+
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public ResponseEntity<?> search(@RequestParam(value="id") Integer id){
+	public ResponseEntity<?> search(@RequestParam(value = "id") Integer id) {
 		ResponseEntity<?> response = new ResponseEntity<>(service.search(id), HttpStatus.OK);
 		return response;
 	}
-	
-	
->>>>>>> 958599eadaa1213316f7a439abe518e671e27499
 
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable Integer id) {
@@ -55,12 +49,4 @@ public class EmployeeController {
 		return response;
 	}
 
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public ResponseEntity<?> search(@RequestParam(value ="id") int id) {
-		ResponseEntity<?> response = new ResponseEntity<>(service.search(id), HttpStatus.OK);
-		return response;
-	}
-
-
-	
 }
