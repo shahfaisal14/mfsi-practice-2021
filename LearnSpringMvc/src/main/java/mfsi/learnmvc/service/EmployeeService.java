@@ -22,17 +22,9 @@ public class EmployeeService {
 	}
 
 	public EmployeeDto search(Integer id) {
-		// TODO Auto-generated method stub
-		/*for(int i=0;i<employees.size();i++)
-		{
-			if(employees.get(i).getId().equals(id))
-			{
-				return employees.get(i);
-			}
-			
-		}*/
-		return employees.stream().filter(t -> t.getId().equals(id)).findAny().get();
-		//return null;
+	
+		return employees.stream().filter(t -> t.getId().equals(id)).findAny().orElse(null);
+		
 	}
 
 }

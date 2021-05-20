@@ -32,7 +32,7 @@ public class EmployeeController {
 		return response;
 	}
 	@RequestMapping(value = "/search/{id}", method = RequestMethod.GET)
-	public ResponseEntity<?> search(@RequestParam("id") Integer id){
+	public ResponseEntity<?> search(@PathVariable Integer id){
 		ResponseEntity<?> response = new ResponseEntity<>(service.search(id), HttpStatus.OK);
 		return response;
 	}
