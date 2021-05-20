@@ -28,21 +28,13 @@ public class EmployeeService {
 	}
 
 	public EmployeeDto update(EmployeeDto dto) {
-		/*for (int i = 0; i < employees.size(); i++) {
-			EmployeeDto d = employees.get(i);
-			if (d.getId().equals(dto.getId())) {
-				employees.set(i, dto);
-				return;
-			}
-		}*/
 		int index = employees.indexOf(dto);
 		employees.set(index, dto);
 		return dto;
 	}
 
 	public EmployeeDto search(Integer id) {
-		
 		return employees.stream().filter(t -> t.getId().equals(id)).findAny().orElse(null);
-		
 	}
+
 }
