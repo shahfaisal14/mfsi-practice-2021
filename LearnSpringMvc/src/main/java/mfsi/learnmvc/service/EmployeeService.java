@@ -21,4 +21,10 @@ public class EmployeeService {
 		return employees;
 	}
 
+	public EmployeeDto search(Integer id) {
+	
+		return employees.stream().filter(t -> t.getId().equals(id)).findAny().orElse(null);
+		
+	}
+
 }
