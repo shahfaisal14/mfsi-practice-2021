@@ -31,8 +31,8 @@ public class EmployeeController {
 		ResponseEntity<?> response = new ResponseEntity<>(service.save(dto), HttpStatus.OK);
 		return response;
 	}
-	@RequestMapping(value = "/search/{id}", method = RequestMethod.GET)
-	public ResponseEntity<?> search(@PathVariable Integer id){
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public ResponseEntity<?> search(@RequestParam(value="id") Integer id){
 		ResponseEntity<?> response = new ResponseEntity<>(service.search(id), HttpStatus.OK);
 		return response;
 	}
