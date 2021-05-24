@@ -13,6 +13,7 @@ public class EmployeeDto implements Serializable {
 		super();
 	}
 
+	
 	public EmployeeDto(Integer id, String name, Double salary) {
 		super();
 		this.id = id;
