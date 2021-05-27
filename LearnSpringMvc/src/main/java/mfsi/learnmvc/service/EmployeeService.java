@@ -28,7 +28,7 @@ public class EmployeeService {
 	}
 
 	public void delete(Integer id) {
-		employees.removeIf(t -> t.getId().equals(id));
+		repository.deleteById(id);
 	}
 
 	public EmployeeDto update(EmployeeDto dto) {
@@ -41,7 +41,7 @@ public class EmployeeService {
 		Employee e = repository.findById(id).get();
 		return mapper(e);
 	}
-	
+
 	private Employee mapper(EmployeeDto dto) {
 		Employee employee = new Employee();
 		employee.setId(dto.getId());
@@ -49,7 +49,7 @@ public class EmployeeService {
 		employee.setSalary(dto.getSalary());
 		return employee;
 	}
-	
+
 	private EmployeeDto mapper(Employee e) {
 		EmployeeDto dto = new EmployeeDto();
 		dto.setId(e.getId());
@@ -58,8 +58,3 @@ public class EmployeeService {
 		return dto;
 	}
 }
-
-
-
-
-
