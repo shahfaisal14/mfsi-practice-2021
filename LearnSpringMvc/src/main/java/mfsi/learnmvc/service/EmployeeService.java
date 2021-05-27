@@ -18,16 +18,14 @@ public class EmployeeService {
 	private List<EmployeeDto> employees = new ArrayList<>();
 
 	public EmployeeDto save(EmployeeDto dto) {
-		employees.add(dto);
 		Employee employee = mapper(dto);
-		repository.save(employee);
-		return dto;
+		employee = repository.save(employee);
+		return mapper(employee);
 	}
 
 	public List<EmployeeDto> getAll() {
 		return employees;
 	}
-
 
 	public void delete(Integer id) {
 		employees.removeIf(t -> t.getId().equals(id));
@@ -40,7 +38,8 @@ public class EmployeeService {
 	}
 
 	public EmployeeDto search(Integer id) {
-		return employees.stream().filter(t -> t.getId().equals(id)).findAny().orElse(null);	
+		Employee e = repository.findById(id).get();
+		return mapper(e);
 	}
 	
 	private Employee mapper(EmployeeDto dto) {
@@ -49,6 +48,14 @@ public class EmployeeService {
 		employee.setName(dto.getName());
 		employee.setSalary(dto.getSalary());
 		return employee;
+	}
+	
+	private EmployeeDto mapper(Employee e) {
+		EmployeeDto dto = new EmployeeDto();
+		dto.setId(e.getId());
+		dto.setName(e.getName());
+		dto.setSalary(e.getSalary());
+		return dto;
 	}
 }
 
