@@ -1,40 +1,34 @@
 package mfsi.learnmvc.domain;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table
-public class Employee {
-	@Id
-	@GeneratedValue
-	private Integer id;
+public class Employee extends BaseEntity {
+
 	@Column
 	private String name;
+
 	@Column
 	private Double salary;
 
+	@OneToMany(mappedBy = "employee")
+	private Set<Asset> assets;
+
 	public Employee() {
 		super();
-
 	}
 
 	public Employee(Integer id, String name, Double salary) {
 		super();
-		this.id = id;
+		super.setId(id);
 		this.name = name;
 		this.salary = salary;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public String getName() {
@@ -53,9 +47,17 @@ public class Employee {
 		this.salary = salary;
 	}
 
+	public Set<Asset> getAssets() {
+		return assets;
+	}
+
+	public void setAssets(Set<Asset> assets) {
+		this.assets = assets;
+	}
+
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + "]";
+		return "Employee [name=" + name + ", salary=" + salary + ", assets=" + assets + "]";
 	}
 
 }
