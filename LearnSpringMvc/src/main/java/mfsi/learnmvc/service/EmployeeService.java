@@ -24,7 +24,12 @@ public class EmployeeService {
 	}
 
 	public List<EmployeeDto> getAll() {
-		return employees;
+		List<Employee> employees = repository.findAll();
+		List<EmployeeDto> dtos = new ArrayList<>();
+		for(Employee employee : employees) {
+			dtos.add(mapper(employee));
+		}
+		return dtos;
 	}
 
 	public void delete(Integer id) {

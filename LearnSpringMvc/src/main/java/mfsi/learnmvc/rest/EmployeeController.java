@@ -1,5 +1,7 @@
 package mfsi.learnmvc.rest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +18,8 @@ import mfsi.learnmvc.service.EmployeeService;
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
+	
+	  private Logger log = LoggerFactory.getLogger(FileController.class);
 
 	@Autowired
 	private EmployeeService service;
@@ -23,6 +27,8 @@ public class EmployeeController {
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public ResponseEntity<?> getAll() {
 		ResponseEntity<?> response = new ResponseEntity<>(service.getAll(), HttpStatus.OK);
+		log.debug("Response {}", response);
+		log.info("getAll called with no args");
 		return response;
 	}
 
